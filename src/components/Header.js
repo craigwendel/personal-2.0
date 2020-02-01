@@ -5,10 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import Button from '@material-ui/core/Button';
 import logo from '../images/cw-logo.png';
 import HideOnScroll from './HideOnScroll';
 import ScrollTop from './ScrollTop';
+import { icons } from '../data/icons';
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   },
   logo: {
     marginRight: '1rem',
+  },
+  icons: {
+    margin: '0.5rem',
   },
   image: {
     width: 35,
@@ -40,27 +43,18 @@ export default function Header(props) {
               <img className={classes.image} src={logo} alt="cw logo" />
             </IconButton>
             <div>
-              <Button
-                href="https://github.com/craigwendel"
-                target="_blank"
-                color="primary"
-              >
-                <i className={'fab fa-github'} />
-              </Button>
-              <Button
-                href="https://www.linkedin.com/in/craig-wendel-86719754/"
-                target="_blank"
-                color="primary"
-              >
-                <i className={'fab fa-linkedin'} />
-              </Button>
-              <Button
-                href="https://www.linkedin.com/in/craig-wendel-86719754/"
-                target="_blank"
-                color="primary"
-              >
-                <i className={'fab fa-medium'} />
-              </Button>
+              {icons.map(i => (
+                <Fab
+                  key={i.name}
+                  className={classes.icons}
+                  href={i.link}
+                  target="_blank"
+                  color="primary"
+                  size="small"
+                >
+                  <i className={i.icon} />
+                </Fab>
+              ))}
             </div>
           </Toolbar>
         </AppBar>

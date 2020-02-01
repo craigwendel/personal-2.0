@@ -1,10 +1,10 @@
 import React from 'react';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import HomePage from './views/HomePage';
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     primary: {
       main: '#4977AC',
@@ -17,6 +17,7 @@ const theme = createMuiTheme({
     htmlFontSize: 10,
   },
 });
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (
